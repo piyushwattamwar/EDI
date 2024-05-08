@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Property</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url('post1.jpg'); /* Replace 'background.jpg' with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .head {
+            margin: 20px auto;
+        }
+        .head h2 {
+            font-size: 35px;
+            font-weight: bolder;
+        
+        }
+        .container {
+            width: 120%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.001); /* Adjust opacity for the desired blur effect */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        
+        .step {
+            display: inline-block;
+            width: 30%;
+            height: 250px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #356dd4;
+            border-radius: 5px;
+            box-sizing: border-box;
+        
+        }
+        .step h2 {
+            margin-top: 0;
+        }
+        .post-property {
+            margin-top: 30px;
+        }
+        .post-property a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:#007ea7;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .post-property a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto">HomeWize</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+             Welcome to Property Listing!!
+        </div>
+    </div>
+
+    <div class="head">
+        <h2>Post Your Property in 3 Simple Steps</h2>
+    </div>
+    <div class="container">
+        <div class="step">
+            <h2>Step 1: Add Details of your property</h2>
+            <p>Begin by telling us the few basic details about your property like your property type, location, No. of rooms etc</p>
+        </div>
+        <div class="step">
+            <h2>Step 2: Upload Photos and videos</h2>
+            <p>Upload photos and videos of your property either via your desktop device or from your mobile phone</p>
+        </div>
+        <div class="step">
+            <h2>Step 3: Add Pricing and ownership</h2>
+            <p>Just update your property’s ownership details and your expected price and your property is ready for posting</p>
+        </div>
+        <div class="post-property">
+            <a href="login.php">Post Property</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { autohide: false });
+            });
+            toastList[0].show(); // Show the first toast when the page loads
+        });
+    </script>
+</body>
+</html>

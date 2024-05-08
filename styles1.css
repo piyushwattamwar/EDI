@@ -1,0 +1,120 @@
+/* styles.css */
+
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styles */
+header {
+    background-color:#007ea7;
+    color: #090707;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 25px;
+}
+
+/* Main content styles */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight:bold;
+    font-size:larger;
+    
+}
+
+input[type="file"],
+input[type="text"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="file"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    border-color:hsl(202, 88%, 66%);
+}
+
+button[type="submit"] {
+    background-color:hsl(212, 64%, 57%);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#logoutButton{
+    background-color:hsl(212, 64%, 57%);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color:hsl(213, 79%, 64%);;
+}
+
+/* Property list styles */
+#propertyList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+.property-card {
+    border: 2px solid #0e0d0d; /* Add a border for better visualization */
+    padding: 20px; /* Add padding to provide space around the content */
+    margin-bottom: 20px; /* Add margin to separate each property card */
+    width: 300px;
+    border-radius: 10px; /* Set a fixed width for the property card */
+}
+
+.property-image img {
+    max-width: 100%; /* Ensure images don't exceed container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent any extra space caused by baseline alignment */
+    margin-bottom: 10px; /* Add margin below the image */
+}
