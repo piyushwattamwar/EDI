@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homewize - Real Estate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Homewize - Real Estate</h1>
+    </header>
+    
+    <main>
+        <section id="addProperty">
+            <h2>Add Property</h2>
+            <form id="propertyForm">
+                <div class="form-group">
+                    <label for="propertyImage">Property Image:</label>
+                    <input type="file" id="propertyImage" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="propertyDescription">Property Description:</label>
+                    <textarea id="propertyDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ownerName">Owner's Name:</label>
+                    <input type="text" id="ownerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="ownerContact">Owner's Contact:</label>
+                    <input type="tel" id="ownerContact" required>
+                </div>
+                <button type="submit" onclick="alert('Property Listed Successfully!!')">Add property</button>
+
+            </form>
+        </section>
+        
+        <section id="sell">
+            <h2>Sell:</h2>
+            <div id="propertyList">
+                <!-- Properties will be displayed here dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('propertyForm');
+            const propertyList = document.getElementById('propertyList');
+
+            // Load properties from localStorage when the page loads
+            loadProperties();
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get form values
+                const propertyImage = document.getElementById('propertyImage').files[0]; // Get the uploaded file
+                const propertyDescription = document.getElementById('propertyDescription').value;
+                const ownerName = document.getElementById('ownerName').value;
+                const ownerContact = document.getElementById('ownerContact').value;
+
+                // Create FileReader object to read file content
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    // Create property card
+                    const propertyCard = document.createElement('div');
+                    propertyCard.classList.add('property-card');
+                    propertyCard.innerHTML = `
+                        <div class="property-image">
+                            <img src="${event.target.result}" alt="Property Image"> <!-- Use event.target.result as image source -->
+                        </div>
+                        <div class="property-details">
+                            <p><strong>Description:</strong> ${propertyDescription}</p>
+                            <p><strong>Owner's Name:</strong> ${ownerName}</p>
+                            <p><strong>Owner's Contact:</strong> ${ownerContact}</p>
+                        </div>
+                    `;
+
+                    // Append property card to property list
+                    propertyList.appendChild(propertyCard);
+
+                    // Save the property to localStorage
+                    saveProperty({
+                        image: event.target.result,
+                        description: propertyDescription,
+                        ownerName: ownerName,
+                        ownerContact: ownerContact
+                    });
+
+                    // Reset form
+                    form.reset();
+                };
+
+                // Read the uploaded image as data URL
+                reader.readAsDataURL(propertyImage);
+            });
+
+            // Function to save property to localStorage
+            function saveProperty(property) {
+                let properties = JSON.parse(localStorage.getItem('properties')) || [];
+                properties.push(property);
+                localStorage.setItem('properties', JSON.stringify(properties));
+            }
+
+            // Function to load properties from localStorage
+            function loadProperties() {
+                let properties = JSON.parse(localStorage.getItem('properties')) || [];
+                properties.forEach(function(property) {
+                    const propertyCard = document.createElement('div');
+                    propertyCard.classList.add('property-card');
+                    propertyCard.innerHTML = `
+                        <div class="property-image">
+                            <img src="${property.image}" alt="Property Image">
+                        </div>
+                        <div class="property-details">
+                            <p><strong>Description:</strong> ${property.description}</p>
+                            <p><strong>Owner's Name:</strong> ${property.ownerName}</p>
+                            <p><strong>Owner's Contact:</strong> ${property.ownerContact}</p>
+                        </div>
+                    `;
+                    propertyList.appendChild(propertyCard);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
